@@ -7,6 +7,7 @@ readme = "README.md"
 repository = "https://github.com/mastercaution/cursive-multiple-choice-view.git"
 keywords = ["cursive", "cursive-views", "TUI"]
 categories = ["command-line-interface", "gui"]
+description = "Multiple choice view for Cursive"
 
 [dependencies]
 cursive_core = "0.4"
