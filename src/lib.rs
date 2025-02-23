@@ -99,6 +99,7 @@ impl<T: 'static + Send + Sync> MultipleChoiceView<T> {
 	/// ```
 	pub fn set_choice_indicators(&mut self, selection_indicators: [&'static str; 2]) {
 		self.choice_indicators = selection_indicators;
+		self.last_required_size = None;
 	}
 
 	/// Sets the visual indicators for chosen and not chosen items.
@@ -990,7 +991,8 @@ impl<T: 'static + Send + Sync> View for MultipleChoiceView<T> {
 		// Items here are not compressible.
 		// So no matter what the horizontal requirements are,
 		// we'll still return our longest item.
-		let w = self
+		let indicators_w = 1 + self.choice_indicators[0].len().max(self.choice_indicators[1].len());
+		let w = indicators_w + self
 			.items
 			.iter()
 			.map(|item| item.label.width())
